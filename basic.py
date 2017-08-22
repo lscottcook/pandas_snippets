@@ -1,1 +1,6 @@
-#read in csv file 
+#read in csv file
+
+
+#Check dtype
+df.info()
+df.dytpes()
