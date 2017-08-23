@@ -1,5 +1,5 @@
 #read in csv file
-
+df = pd.read_csv('<filename>')
 
 #Check dtype
 df.info()

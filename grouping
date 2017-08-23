@@ -1,0 +1,2 @@
+#Group-By
+df.groupby(['Col1', 'Col2'])
