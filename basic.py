@@ -1,13 +1,21 @@
 #read in csv file
 df = pd.read_csv('<filename>')
 
+
+#Create a df
+data= {'col 1': ['data 1, 'data 2', 'data 3'],
+        'col 2: ['data 4', 'data 5', 'data 6']}
+df = pd.DataFrame(data, columns = ['col 1', 'col 2'])
+df
+
+
 #Check dtype
 df.info()
 df.dytpes()
 
 
 #Import another jupyter notebook
-%run '<notebook name>.ipynb'
+%run <notebook name>.ipynb
 
 #List column names
 df.columns
@@ -27,3 +35,6 @@ df_new = df[(df['col1'].isnull()) & (df['col2'].isnull()) /
 
 #Unique counts in a columne
 len(df['col1'].unique())
+
+#Insert a row
+df.loc[-1] = [2, 3, 4]

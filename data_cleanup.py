@@ -8,3 +8,7 @@ dupes = df[df.duplicated(['col1', 'col2', 'col3'], keep=False)]
 
 # Drop Duplicates
 df.drop_duplicates()
+
+
+#format decimals
+df..style.format({'% col': '{:,.2f}'.format,})
