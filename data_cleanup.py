@@ -12,3 +12,7 @@ df.drop_duplicates()
 
 #format decimals
 df..style.format({'% col': '{:,.2f}'.format,})
+
+
+#replace data
+df.loc[df['col'].isin(['old_data_1', 'old_data_2']), 'col'] = 'new_data'
