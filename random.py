@@ -20,3 +20,10 @@ df_3 = df_1[~df_1['col 1']].isin(df_2['col 2'])]
 
 #Wrap jn
 \
+
+
+# Add 'upstream' repo to list of remotes
+git remote add upstream <link for original repo>
+
+# Fetch from upstream remote
+git fetch upstream
