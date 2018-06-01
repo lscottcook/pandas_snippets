@@ -27,3 +27,5 @@ git remote add upstream <link for original repo>
 
 # Fetch from upstream remote
 git fetch upstream
+git checkout master
+git merge upstream/master
