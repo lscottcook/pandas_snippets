@@ -21,6 +21,10 @@ df_3 = df_1[~df_1['col 1']].isin(df_2['col 2'])]
 #Wrap jn
 \
 
+#hide Pandas warnings in jupyter notebook 
+import warnings
+warnings.filterwarnings('ignore')
+
 
 # Add 'upstream' repo to list of remotes
 git remote add upstream <link for original repo>
