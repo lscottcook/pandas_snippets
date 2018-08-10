@@ -11,7 +11,7 @@ df.drop_duplicates()
 
 
 #format decimals
-df..style.format({'% col': '{:,.2f}'.format,})
+df.style.format({'% col': '{:,.2f}'.format,})
 
 
 #replace data
