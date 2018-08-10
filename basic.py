@@ -11,7 +11,7 @@ df
 
 #Check dtype
 df.info()
-df.dytpes()
+df.dtypes()
 
 
 #Import another jupyter notebook
