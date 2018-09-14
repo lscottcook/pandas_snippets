@@ -33,3 +33,7 @@ git remote add upstream <link for original repo>
 git fetch upstream
 git checkout master
 git merge upstream/master
+
+# Widen diplay output of df in jupyter notebook  
+pd.set_option('display.expand_frame_repr', False)
+pd.set_option('max_colwidth', -1)
