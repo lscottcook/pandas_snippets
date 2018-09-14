@@ -21,3 +21,21 @@ df_rename = df.rename(columns = {'col1':'Column 1', 'col2':'Column 2'})
 
  #Write to df not using merged cells
  merge_cells=False
+ 
+ 
+ #Create a dataframe from multiple json files nested key values 
+import os 
+ 
+directory_path = '<directory filepath>'
+def concat_json_files(directory_path):
+    columns = [<list column names>]
+    df = pd.DataFrame(columns=columns)
+    for json_file in os.listdir(directory_path):
+        full_filepath = os.path.join(directory_path, json_file)
+        with open(full_filepath) as f:
+            data = json.load(f)
+            df_file = pd.DataFrame(data['<key for the top level you want to retrieve>'])
+            #concat all the df's 
+            df = pd.concat([df, df_files])
+    return df 
+
