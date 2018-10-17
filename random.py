@@ -41,3 +41,50 @@ pd.set_option('max_colwidth', -1)
 
 #finding path for user 
 (os.path.expanduser('~'))
+
+
+
+"""function for creating an Excel Workbook with multiple dataframes each on a separate worksheet then upload to S3. User is either on
+a windows machine or the script is running form Jenkins 
+filename = the name of the Excel file without .xlsx
+args = the name of the dataframes
+"""
+sys.path.insert(0, os.path.abspath('.'))
+user = (os.path.expanduser('~'))
+
+#get filepath for the user
+def get_filepath(user):
+    #for windows 
+    if  'User' in user:
+        filepath = user + '/<insert folder name>/'
+    #for linux     
+    elif 'jenkins' in user:
+        filepath = '/tmp/%s'
+
+    return filepath
+
+user_filepath = get_filepath(user)
+
+def upload_s3(filename,*args):
+    s3resource = boto3.resource('s3')
+    bucket = s3resource.Bucket('<insert s3 bucket name>')
+    filename = '{}_{}.xlsx'.format(
+        filename,pd.datetime.today().strftime(
+            '%m%d%y'),engine='xlsxwriter',options={'remove_timezone':True})
+    filepath = user_filepath + filename
+    workbook = pd.ExcelWriter(filepath, engine='xlsxwriter')
+    #create a worksheet for each df passed into the function
+    for n,df in enumerate(args):
+        df.to_excel(workbook,'sheet%s' % str(n + 1),index=False)
+    workbook.save()
+    #path on S3 to upload
+    basepath = '<insert filepath on S3 without the bucket name> /%s'
+    bucket.upload_file(filepath, (basepath % filename), ExtraArgs={'ServerSideEncryption' : 'AES256'})
+    os.remove(filepath)
+    #optional print statement 
+    print 'Finished uploading file <insert file path>' + filename
+    
+    """
+    Example of calling the function:
+    df_report = upload_s3('Annual_Report', df_1, df_2') 
+    """def upload_s3(filename,*args):
