@@ -37,3 +37,7 @@ git merge upstream/master
 # Widen diplay output of df in jupyter notebook  
 pd.set_option('display.expand_frame_repr', False)
 pd.set_option('max_colwidth', -1)
+
+
+#finding path for user 
+(os.path.expanduser('~'))
