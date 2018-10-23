@@ -109,3 +109,20 @@ def get_specific_ptn(dataframe,args):
 
 #run script 
 python welcome_user.py -n Lisa 
+############## 
+
+
+############## 
+"""create parse df to create multiple excel workbooks. For example if you have a df containing information
+for multiple employees and and need to create individual reports to distribute to each employee"""
+def get_individual_reports(df_all_employees):
+    names = df_all_employees['employee_name'].unique()
+    for name in names:
+        df_individual = df_all_employees[df_all_employees['employee_name']==name]
+        individual_wb = ExcelWriter('{}_Employee_Report_{}.xlsx'.format(name,pd.datetime.today().strftime('%m%d%y')))
+        df_inividual.to_excel(individual_qb, 'Employee Results', index=False )
+    return individual_wb 
+
+
+
+
