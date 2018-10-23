@@ -87,4 +87,25 @@ def upload_s3(filename,*args):
     """
     Example of calling the function:
     df_report = upload_s3('Annual_Report', df_1, df_2') 
-    """def upload_s3(filename,*args):
+    """
+        
+        
+##############        
+#Pass in commandline arguements into function 
+import sys, os
+import argparse
+sys.path.insert(0, os.path.abspath('.'))
+
+parser = argparse.ArgumentParser(description='You can add a ')
+
+parser.add_argument('-n','--name', help='users name',required=True)
+args = parser.parse_args()
+
+#create a function 
+def get_specific_ptn(dataframe,args):
+    first_name = args.name
+    hello = "Hi " + first_name
+    return hello 
+
+#run script 
+python welcome_user.py -n Lisa 
