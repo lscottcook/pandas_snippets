@@ -15,7 +15,7 @@ df['dupicate tag '] = df.groupby('col 1').cumcount() + 1
 
 
 #Filter by what is not contained in another DataFrame
-df_3 = df_1[~df_1['col 1']].isin(df_2['col 2'])]
+df_3 = df_1[(~df_1['col 1']).isin(df_2['col 2'])]
 
 
 #Wrap jn
